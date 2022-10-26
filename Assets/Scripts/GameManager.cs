@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public bool isStarted;
     public int score;
-    private float timer = 60f;
+    private float timer = 30f;
     private bool isComboStarted;
     private bool canCombo;
     private float comboTimer;
@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
-        scoreText.text = score.ToString();
+        scoreText.text = "Score: " + score.ToString();
     }
 
     private void Start()
@@ -38,9 +38,11 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        timer = 60f;
+        timer = 30f;
         score = 0;
+        gameOverPanel.SetActive(false);
         isStarted = true;
+        scoreText.text = "Score: " + score.ToString();
     }
 
     public void IncreaseCombo()
